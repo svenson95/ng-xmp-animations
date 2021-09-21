@@ -1,10 +1,12 @@
 <section class="two">
-  <h1 class="title">Scroll point animation</h1>
-  <code>{{"@HostListener('window:scroll', ['$event']) onScroll { ... }"}}</code>
-  <p>
-    <code>:enter</code> and <code>:leave</code> are aliases for the <code>void => *</code> and <code>* => void</code> transitions.
-    Use the aliases to target HTML elements that are inserted or removed from a view, for example with <code>*ngIf</code> or <code>*ngFor</code>.
-  </p>
+  <div class="content">
+    <h1 class="title left top">Scroll point animation</h1>
+    <code>{{"@HostListener('window:scroll', ['$event']) onScroll { ... }"}}</code>
+    <p>
+      <code>:enter</code> and <code>:leave</code> are aliases for the <code>void => *</code> and <code>* => void</code> transitions.
+      Use the aliases to target HTML elements that are inserted or removed from a view, for example with <code>*ngIf</code> or <code>*ngFor</code>.
+    </p>
+  </div>
   <div class="card-wrapper">
     <div class="card" [@scrollState]="slideState">
       <img src="assets/angular-logo.svg" #image>

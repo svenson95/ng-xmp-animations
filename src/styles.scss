@@ -42,21 +42,34 @@ code {
 }
 
 section {
-  height: 90vh;
+  justify-content: space-around;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
 
   .title {
+    margin: 0;
     font-weight: 300;
+    margin-top: -30px;
 
     &.right {
       color: black;
+      text-align: right;
+    }
 
-      margin-bottom: -50px;
-      position: absolute;
-      bottom: 00px;
-      right: 20px;
+    &.right.bottom {
+      margin-bottom: -100px;
+    }
+
+    &.left.top {
+      margin-top: -50px;
+      margin-bottom: 50px;
+    }
+
+    &.right.top {
+      margin-top: -140px;
+      margin-bottom: 50px;
     }
   }
 

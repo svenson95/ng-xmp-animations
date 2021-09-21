@@ -1,7 +1,10 @@
 <section class="three">
-  <h1 class="title">Stagger animations</h1>
-  <p>Use within an animation query() call to issue a timing gap after each queried item is animated.</p>
-  <code>stagger(timings: string | number, animation: AnimationMetadata | AnimationMetadata[]): AnimationStaggerMetadata</code>
+  <div class="content">
+    <h1 class="title right top">Stagger animations</h1>
+    <code>{{"import { animate, query, stagger, state, style, transition, trigger } from \"@angular/animations\";"}}</code>
+    <p>Use within an animation query() call to issue a timing gap after each queried item is animated.</p>
+    <code>stagger(timings: string | number, animation: AnimationMetadata | AnimationMetadata[]): AnimationStaggerMetadata</code>
+  </div>
   <div class="card-wrapper">
     <button class="btn" (click)="toggleSlide()">{{slide ? 'Hide' : 'Show'}} details</button>
     <div class="animation-wrapper" [@slideState]="slideState" #cardsContainer>
