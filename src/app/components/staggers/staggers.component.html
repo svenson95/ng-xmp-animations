@@ -3,7 +3,7 @@
   <p>Use within an animation query() call to issue a timing gap after each queried item is animated.</p>
   <code>stagger(timings: string | number, animation: AnimationMetadata | AnimationMetadata[]): AnimationStaggerMetadata</code>
   <div class="card-wrapper">
-    <button class="btn" (click)="toggleSlide()">Toggle Stagger animation</button>
+    <button class="btn" (click)="toggleSlide()">{{slide ? 'Show' : 'Hide'}} details</button>
     <div class="animation-wrapper" [@slideState]="slideState" #cardsContainer>
       <div class="card small" *ngFor="let c of cards">
         <span>&#10004;</span>

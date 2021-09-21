@@ -20,7 +20,7 @@
   </div>
 
   <div class="card-wrapper">
-    <button class="btn" (click)="toggleVisible()">{{show ? 'Show implementation' : 'Hide implementation'}}</button>
+    <button class="btn" (click)="toggleVisible()">{{show ? 'Show' : 'Hide'}} implementation</button>
 
     <div class="card" [@fadeState]="visibleState" (@fadeState.start)="logStart($event)" (@fadeState.done)="logDone($event)">
       <p>

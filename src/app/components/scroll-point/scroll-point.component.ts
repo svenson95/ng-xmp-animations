@@ -1,5 +1,5 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { animate, state, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: 'app-slide',
