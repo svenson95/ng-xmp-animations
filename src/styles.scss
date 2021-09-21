@@ -42,7 +42,7 @@ code {
 }
 
 section {
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -54,21 +54,20 @@ section {
 
     &.right {
       color: black;
-      text-align: right;
+      align-self: self-end;
     }
 
     &.right.bottom {
-      margin-bottom: -100px;
+      transform: translateY(40px);
     }
 
     &.left.top {
-      margin-top: -50px;
-      margin-bottom: 50px;
+      margin-top: 30px;
+      margin-bottom: 20px;
     }
 
     &.right.top {
-      margin-top: -140px;
-      margin-bottom: 50px;
+      transform: translateY(-40px);
     }
   }
 
