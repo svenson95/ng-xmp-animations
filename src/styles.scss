@@ -42,7 +42,6 @@ code {
 }
 
 section {
-  justify-content: space-between;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -54,7 +53,8 @@ section {
 
     &.right {
       color: black;
-      align-self: self-end;
+      text-align: right;
+      align-self: end;
     }
 
     &.right.bottom {

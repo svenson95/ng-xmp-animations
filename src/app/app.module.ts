@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { EnterComponent } from "./components/enter/enter.component";
 import { ScrollPointComponent } from './components/scroll-point/scroll-point.component';
 import { StaggersComponent } from './components/staggers/staggers.component';
+import { SectionComponent } from './section/section.component';
 
 @NgModule({
-  declarations: [AppComponent, EnterComponent, ScrollPointComponent, StaggersComponent],
+  declarations: [AppComponent, EnterComponent, ScrollPointComponent, StaggersComponent, SectionComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule
