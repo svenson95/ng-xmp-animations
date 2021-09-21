@@ -1,0 +1,14 @@
+$section-two-bg-1: rgba(#d60707, .6);
+$section-two-bg-2: rgba(#d60707, .7);
+
+section.two {
+  background-image: linear-gradient(to right bottom, $section-two-bg-1, $section-two-bg-2);
+
+  .title {
+    color: white;
+  }
+
+  .card {
+    width: 256px;
+  }
+}

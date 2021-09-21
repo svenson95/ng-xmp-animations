@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+p {
+  line-height: 22px;
+}
+
+button {
+  background: transparent;
+  border: none;
+}
+
+.btn {
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  background: rgba(#0084ff, .6);
+  color: white;
+  border: 1px solid lightgrey;
+  padding: 10px 14px;
+
+  &:hover {
+    background: rgba(#0084ff, .8);
+  }
+}
+
+code {
+  font-family: Roboto Mono, monospace;
+  width: fit-content;
+  background-color: hsla(0,0%,86%,.3);
+  border-radius: 4px;
+  padding: 1px 2px;
+}
+
+.sections > *:not(:first-child):not(:last-child) section {
+  position: relative;
+  clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+}
+
+section {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .title {
+    font-weight: 300;
+
+    &.right {
+      color: black;
+
+      margin-bottom: -50px;
+      position: absolute;
+      bottom: 00px;
+      right: 20px;
+    }
+  }
+
+  .card-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 20px;
+    background: dimgrey;
+    border-radius: 8px;
+    color: white;
+  }
+}

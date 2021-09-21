@@ -1,0 +1,40 @@
+
+section.three {
+  .title {
+  }
+
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin: 20px;
+  }
+
+  .animation-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: auto;
+
+    .card.small {
+      flex-direction: row;
+      width: 100%;
+      margin-left: 0;
+      padding: 12px;
+
+      p {
+        margin: 0;
+      }
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    .card + .card {
+      margin-top: 20px;
+    }
+  }
+}

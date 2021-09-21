@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "animations-landing-page-app": {
+    "ng-xmp-landing-animations": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/animations-landing-page-app",
+            "outputPath": "dist/ng-xmp-landing-animations",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "animations-landing-page-app:build:production"
+              "browserTarget": "ng-xmp-landing-animations:build:production"
             },
             "development": {
-              "browserTarget": "animations-landing-page-app:build:development"
+              "browserTarget": "ng-xmp-landing-animations:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "animations-landing-page-app:build"
+            "browserTarget": "ng-xmp-landing-animations:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "animations-landing-page-app"
+  "defaultProject": "ng-xmp-landing-animations"
 }

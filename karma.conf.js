@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/animations-landing-page-app'),
+      dir: require('path').join(__dirname, './coverage/ng-xmp-landing-animations'),
       subdir: '.',
       reporters: [
         { type: 'html' },
