@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";
-import { debounceTime, map } from "rxjs/operators";
 
 import { ScrollService } from "../../services/scroll.service";
 
@@ -47,21 +46,16 @@ export class StaggersComponent implements OnInit {
   constructor(private scroll: ScrollService) { }
 
   ngOnInit() {
-    this.scroll.keyup$
-      .pipe(
-        map((event) => event),
-        debounceTime(80)
-      )
-      .subscribe((event) => {
-        this.inViewport = this.isInViewport(this.cardsContainer.nativeElement);
-      });
+    this.scroll.scrollEvent$.subscribe((event) => {
+      this.inViewport = this.isInViewport(this.cardsContainer.nativeElement);
+    });
   }
 
   get slideState() {
     return this.inViewport ? 'visible' : 'hidden';
   }
 
-  isInViewport(el: any) {
+  isInViewport(el: HTMLElement) {
     const rect = el.getBoundingClientRect();
 
     return (

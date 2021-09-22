@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { debounceTime, map } from "rxjs/operators";
 
 import { ScrollService } from "../../services/scroll.service";
 
@@ -41,23 +40,16 @@ export class ScrollPointComponent implements OnInit {
   constructor(private scroll: ScrollService) { }
 
   ngOnInit() {
-    this.scroll.keyup$
-      .pipe(
-        map((event) => event),
-        debounceTime(50)
-      )
-      .subscribe((event) => {
-        console.log(event);
-        this.inViewport = this.isInViewport(this.image.nativeElement);
-      });
+    this.scroll.scrollEvent$.subscribe((event) => {
+      this.inViewport = this.isInViewport(this.image.nativeElement);
+    });
   }
 
   get slideState() {
     return this.inViewport ? 'show' : 'hide';
   }
 
-  isInViewport(el: any) {
-    if (!el) return false;
+  isInViewport(el: HTMLElement) {
     const rect = el.getBoundingClientRect();
 
     return (
