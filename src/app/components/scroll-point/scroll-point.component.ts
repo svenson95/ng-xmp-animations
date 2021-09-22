@@ -1,5 +1,8 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from "@angular/animations";
+import { debounceTime, map } from "rxjs/operators";
+
+import { ScrollService } from "../../services/scroll.service";
 
 @Component({
   selector: 'app-slide',
@@ -22,9 +25,10 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
     ])
   ]
 })
-export class ScrollPointComponent {
+export class ScrollPointComponent implements OnInit {
 
-  scrolled = false;
+  @ViewChild('image') image!: ElementRef;
+  inViewport = false;
   cards = [
     "@angular/animations is installed by default",
     "import { BrowserAnimationsModule } from '@angular/platform-browser/animations';",
@@ -34,27 +38,36 @@ export class ScrollPointComponent {
     "Angular's animation system is built on CSS functionality"
   ];
 
-  @ViewChild('image') image!: ElementRef;
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    this.scrolled = this.isInViewport(this.image.nativeElement);
+  constructor(private scroll: ScrollService) { }
+
+  ngOnInit() {
+    this.scroll.keyup$
+      .pipe(
+        map((event) => event),
+        debounceTime(50)
+      )
+      .subscribe((event) => {
+        console.log(event);
+        this.inViewport = this.isInViewport(this.image.nativeElement);
+      });
   }
 
   get slideState() {
-    return this.scrolled ? 'show' : 'hide';
+    return this.inViewport ? 'show' : 'hide';
   }
 
   isInViewport(el: any) {
+    if (!el) return false;
     const rect = el.getBoundingClientRect();
 
     return (
-      rect.top <= 500 &&
+      rect.top <= 600 &&
       rect.bottom >= 300
     );
   }
 
   toggleSlide() {
-    this.scrolled = !this.scrolled;
+    this.inViewport = !this.inViewport;
   }
 
 }

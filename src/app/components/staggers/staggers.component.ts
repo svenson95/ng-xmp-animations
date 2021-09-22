@@ -1,5 +1,8 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";
+import { debounceTime, map } from "rxjs/operators";
+
+import { ScrollService } from "../../services/scroll.service";
 
 const MARGIN = '700px';
 
@@ -28,9 +31,9 @@ const MARGIN = '700px';
     ])
   ]
 })
-export class StaggersComponent {
+export class StaggersComponent implements OnInit {
 
-  slide = false;
+  inViewport = false;
   cards = [
     "@angular/animations is installed by default",
     "Animation provides the illusion of motion: HTML elements change styling over time",
@@ -40,25 +43,34 @@ export class StaggersComponent {
   ];
 
   @ViewChild('cardsContainer') cardsContainer!: ElementRef;
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    this.slide = this.isInViewport(this.cardsContainer.nativeElement);
+
+  constructor(private scroll: ScrollService) { }
+
+  ngOnInit() {
+    this.scroll.keyup$
+      .pipe(
+        map((event) => event),
+        debounceTime(80)
+      )
+      .subscribe((event) => {
+        this.inViewport = this.isInViewport(this.cardsContainer.nativeElement);
+      });
   }
 
   get slideState() {
-    return this.slide ? 'visible' : 'hidden';
+    return this.inViewport ? 'visible' : 'hidden';
   }
 
   isInViewport(el: any) {
     const rect = el.getBoundingClientRect();
 
     return (
-      rect.top <= 500
+      rect.top <= 700
     );
   }
 
   toggleSlide() {
-    this.slide = !this.slide;
+    this.inViewport = !this.inViewport;
   }
 
 }
