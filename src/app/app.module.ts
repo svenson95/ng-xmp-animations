@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EnterComponent } from "./components/enter/enter.component";
 import { ScrollPointComponent } from './components/scroll-point/scroll-point.component';
 import { StaggersComponent } from './components/staggers/staggers.component';
+import { ScrollService } from "./services/scroll.service";
 
 @NgModule({
   declarations: [AppComponent, EnterComponent, ScrollPointComponent, StaggersComponent],
@@ -14,7 +15,7 @@ import { StaggersComponent } from './components/staggers/staggers.component';
     BrowserModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
