@@ -10,7 +10,7 @@ const MARGIN = '700px';
   templateUrl: './staggers.component.html',
   styleUrls: ['./staggers.component.scss'],
   animations: [
-    trigger('slideState', [
+    trigger('staggering', [
       state('visible', style({})),
       state('hidden', style({
         transform: `translateX(-${MARGIN})`
@@ -51,7 +51,7 @@ export class StaggersComponent implements OnInit {
     });
   }
 
-  get slideState() {
+  get staggerState() {
     return this.inViewport ? 'visible' : 'hidden';
   }
 

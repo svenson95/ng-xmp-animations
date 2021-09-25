@@ -8,19 +8,19 @@ import { ScrollService } from "../../services/scroll.service";
   templateUrl: './scroll-point.component.html',
   styleUrls: ['./scroll-point.component.scss'],
   animations: [
-    trigger('scrollState', [
+    trigger('scrolling', [
       state('*', style({
         opacity: 0,
         transform: 'translateX(-200%)'
       })),
-      state('show', style({
+      state('visible', style({
         opacity: '*' // opacity is 1.0 by default
       })),
-      state('hide',   style({
+      state('hidden',   style({
         opacity: 0.1
       })),
-      transition('show => hide', animate('500ms ease-out')),
-      transition('hide => show', animate('200ms ease-in'))
+      transition('visible => hidden', animate('500ms ease-out')),
+      transition('hidden => visible', animate('200ms ease-in'))
     ])
   ]
 })
@@ -46,7 +46,7 @@ export class ScrollPointComponent implements OnInit {
   }
 
   get slideState() {
-    return this.inViewport ? 'show' : 'hide';
+    return this.inViewport ? 'visible' : 'hidden';
   }
 
   isInViewport(el: HTMLElement) {
