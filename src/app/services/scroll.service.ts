@@ -6,10 +6,12 @@ import { debounceTime, map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class ScrollService {
-  scrollEvent$: Observable<WheelEvent | Event>;
+  scrollEvent$ = fromEvent(window, 'wheel');
 
-  constructor() {
-    this.scrollEvent$ = fromEvent(window, 'wheel').pipe(
+  constructor() { }
+
+  getEvent(): Observable<WheelEvent | Event> {
+    return this.scrollEvent$.pipe(
       map((event) => event),
       debounceTime(50)
     );

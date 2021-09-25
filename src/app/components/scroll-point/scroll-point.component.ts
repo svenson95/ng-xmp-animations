@@ -40,7 +40,7 @@ export class ScrollPointComponent implements OnInit {
   constructor(private scroll: ScrollService) { }
 
   ngOnInit() {
-    this.scroll.scrollEvent$.subscribe((event) => {
+    this.scroll.getEvent().subscribe((event) => {
       this.inViewport = this.isInViewport(this.image.nativeElement);
     });
   }
