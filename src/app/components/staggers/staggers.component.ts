@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";
 
 import { ScrollService } from "../../services/scroll.service";
@@ -43,7 +43,7 @@ export class StaggersComponent implements OnInit {
 
   @ViewChild('cardsContainer') cardsContainer!: ElementRef;
 
-  constructor(private scroll: ScrollService) { }
+  constructor(@Inject(ScrollService) private scroll: ScrollService) { }
 
   ngOnInit() {
     this.scroll.getEvent().subscribe((event) => {
