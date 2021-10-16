@@ -8,8 +8,29 @@ section.two {
     color: white;
   }
 
-  .card {
-    width: 180px;
-    margin-top: 80px;
+  .content {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+
+    .header {
+      display: flex;
+    }
+
+    code {
+      white-space: pre;
+      color: white;
+      background: transparent;
+    }
+
+    div.wrapper {
+      margin-left: auto;
+      max-width: 550px;
+    }
+
+    .card {
+      width: 180px;
+      margin-top: 20px;
+    }
   }
 }

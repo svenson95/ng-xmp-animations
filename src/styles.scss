@@ -14,7 +14,7 @@ button {
   border: none;
 }
 
-.btn {
+button.primary-button {
   cursor: pointer;
   height: fit-content;
   width: fit-content;
@@ -31,7 +31,7 @@ button {
 code {
   font-family: Roboto Mono, monospace;
   width: fit-content;
-  background-color: hsla(0,0%,86%,.3);
+  background-color: hsla(0, 0%, 86%, .3);
   border-radius: 4px;
   padding: 1px 2px;
 }
@@ -55,19 +55,6 @@ section {
       color: black;
       text-align: right;
       align-self: end;
-    }
-
-    &.right.bottom {
-      transform: translateY(40px);
-    }
-
-    &.left.top {
-      margin-top: 30px;
-      margin-bottom: 20px;
-    }
-
-    &.right.top {
-      transform: translateY(-40px);
     }
   }
 

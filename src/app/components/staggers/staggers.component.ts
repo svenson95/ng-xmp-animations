@@ -1,33 +1,64 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
-import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";
+import {animate, query, stagger, state, style, transition, trigger} from "@angular/animations";
 
-import { ScrollService } from "../../services/scroll.service";
+import {ScrollService} from "../../services/scroll.service";
 
-const MARGIN = '700px';
+const MARGIN = '800px';
 
 @Component({
   selector: 'app-staggers',
   templateUrl: './staggers.component.html',
   styleUrls: ['./staggers.component.scss'],
   animations: [
-    trigger('staggering', [
-      state('visible', style({})),
+    trigger('stagger', [
       state('hidden', style({
-        transform: `translateX(-${MARGIN})`
+        // initial
+        height: '*',
+        transform: `translateX(-${MARGIN})`,
       })),
-      transition('visible => hidden', [
-        query('.card',
-          stagger('100ms ease-in', [
-            animate('250ms ease-in-out', style({ transform: `translateX(-${MARGIN})` }))
-          ]))
-      ]),
+      state('visible', style({
+        // initial
+        height: '*',
+      })),
       transition('hidden => visible', [
-        query('.card',
-          stagger('120ms ease-in-out', [
-            animate('220ms ease-in-out', style({ transform: `translateX(${MARGIN})` }))
-          ]))
+        query('.card', stagger('150ms ease-in-out', [
+          style({
+            // initial
+            opacity: 0,
+            height: '0px',
+            'padding-top': '0',
+            'padding-bottom': '0',
+          }),
+          animate('250ms ease-in-out', style({
+            // final
+            opacity: 1,
+            transform: `translateX(${MARGIN})`,
+            height: '*',
+            'padding-top': '*',
+            'padding-bottom': '*',
+          })),
+        ]))
+      ]),
+      transition('visible => hidden', [
+        query('.card', stagger('120ms ease-in-out', [
+          style({
+            // initial
+            height: '*',
+            'padding-top': '*',
+            'padding-bottom': '*',
+            opacity: 1,
+          }),
+          animate('250ms ease-in-out', style({
+            // final
+            height: '0px',
+            'padding-top': '0',
+            'padding-bottom': '0',
+            opacity: 0,
+            transform: `translateX(-${MARGIN})`
+          }))
+        ]))
       ])
-    ])
+    ]),
   ]
 })
 export class StaggersComponent implements OnInit {
@@ -43,16 +74,17 @@ export class StaggersComponent implements OnInit {
 
   @ViewChild('cardsContainer') cardsContainer!: ElementRef;
 
-  constructor(@Inject(ScrollService) private scroll: ScrollService) { }
+  constructor(@Inject(ScrollService) private scroll: ScrollService) {
+  }
+
+  get staggerState() {
+    return this.inViewport ? 'visible' : 'hidden';
+  }
 
   ngOnInit() {
     this.scroll.getEvent().subscribe((event) => {
       this.inViewport = this.isInViewport(this.cardsContainer.nativeElement);
     });
-  }
-
-  get staggerState() {
-    return this.inViewport ? 'visible' : 'hidden';
   }
 
   isInViewport(el: HTMLElement) {

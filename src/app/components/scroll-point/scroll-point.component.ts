@@ -16,7 +16,7 @@ import { ScrollService } from "../../services/scroll.service";
       state('visible', style({
         opacity: '*' // opacity is 1.0 by default
       })),
-      state('hidden',   style({
+      state('hidden', style({
         opacity: 0.1
       })),
       transition('visible => hidden', animate('500ms ease-out')),
@@ -25,6 +25,20 @@ import { ScrollService } from "../../services/scroll.service";
   ]
 })
 export class ScrollPointComponent implements OnInit {
+
+  public typescript = `
+    import { fromEvent, Observable } from "rxjs";
+    import { debounceTime, map } from "rxjs/operators";
+
+    scrollEvent$ = fromEvent(window, 'wheel');
+
+    getEvent(): Observable<WheelEvent | Event> {
+      return this.scrollEvent$.pipe(
+        map((event) => event),
+        debounceTime(50)
+      );
+    }
+  `;
 
   @ViewChild('image') image!: ElementRef;
   inViewport = false;
@@ -37,16 +51,18 @@ export class ScrollPointComponent implements OnInit {
     "Angular's animation system is built on CSS functionality"
   ];
 
-  constructor(@Inject(ScrollService) private scroll: ScrollService) { }
+  constructor(@Inject(ScrollService) private scroll: ScrollService) {
+    console.log(JSON.stringify(this.typescript))
+  }
+
+  get slideState() {
+    return this.inViewport ? 'visible' : 'hidden';
+  }
 
   ngOnInit() {
     this.scroll.getEvent().subscribe((event) => {
       this.inViewport = this.isInViewport(this.image.nativeElement);
     });
-  }
-
-  get slideState() {
-    return this.inViewport ? 'visible' : 'hidden';
   }
 
   isInViewport(el: HTMLElement) {

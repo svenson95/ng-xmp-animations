@@ -6,7 +6,7 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
   templateUrl: './enter.component.html',
   styleUrls: ['./enter.component.scss'],
   animations: [
-    trigger('fadeState', [
+    trigger('slide', [
       state('*', style({
         opacity: 0,
         transform: 'translateX(-200%)'

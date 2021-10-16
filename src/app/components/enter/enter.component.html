@@ -1,16 +1,7 @@
 <section class="one">
+  <h1 class="title right">State animation</h1>
   <div class="content">
     <code class="subtitle">@angular/animations</code>
-    <p>
-      States like <code>*</code> (wildcard) and <code>void</code> are used for elements entering and leaving a view. <br/>
-      An asterisk <code>*</code> or <code>wildcard</code> matches any animation state. <br/>
-      The <code>void</code> state configure transitions for an element that is entering or leaving a page.
-    </p>
-    <hr>
-    <p>
-      Use the wildcard <code>*</code> in a style like <code>{{"style ({ opacity: '*' })"}}</code> to tell the animation to use whatever the current style value is, and animate with that.
-      Wildcard is a fallback value that's used if the state being animated isn't declared within the trigger.
-    </p>
     <hr>
     <code class="subtitle">@angular/animations/browser</code>
     <p style="margin-top: 5px;">Provides infrastructure for cross-platform rendering of animations in a browser.</p>
@@ -19,14 +10,14 @@
   </div>
 
   <div class="card-wrapper">
-    <button class="btn" (click)="toggleVisible()">{{show ? 'Show' : 'Hide'}} implementation</button>
+    <button class="primary-button" (click)="toggleVisible()">{{show ? 'Show' : 'Hide'}} implementation</button>
 
-    <div class="card" [@fadeState]="visibleState" (@fadeState.start)="logStart($event)" (@fadeState.done)="logDone($event)">
+    <div class="card" [@slide]="visibleState" (@slide.start)="logStart($event)"
+         (@slide.done)="logDone($event)">
       <p>
         To enable angular animations <code>BrowserAnimationsModule</code> need to be imported either in
         <code>app.module.ts</code> or in the related component where the animations should be applied.</p>
       <code class="import">{{"import { BrowserAnimationsModule } from '@angular/platform-browser/animations';"}}}</code>
     </div>
   </div>
-  <h1 class="title right bottom">State animation</h1>
 </section>

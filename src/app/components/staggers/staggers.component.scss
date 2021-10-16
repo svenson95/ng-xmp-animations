@@ -37,4 +37,20 @@ section.three {
       margin-top: 20px;
     }
   }
+
+  div.content {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    grid-gap: 20px;
+
+    code {
+      display: flex;
+
+      span {
+        color: lightgrey;
+      }
+    }
+  }
 }
