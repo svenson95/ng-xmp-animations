@@ -5,11 +5,11 @@
     <code>stagger(timings: <span>string | number</span>, animation: <span>AnimationMetadata | AnimationMetadata[]</span>):
       <b>AnimationStaggerMetadata</b></code>
     <div class="card-wrapper">
-      <button class="primary-button" (click)="toggleSlide()">{{inViewport ? 'Hide' : 'Show'}} details</button>
-      <div class="animation-wrapper" [@stagger]="staggerState" #cardsContainer>
-        <div class="card small" *ngFor="let c of cards">
+      <button class="primary-button" (click)="toggleSlide()">{{showStagger ? 'Hide' : 'Show'}} details</button>
+      <div class="animation-wrapper" [@staggerAnimation]="showStagger" #cardsContainer>
+        <div class="card small" *ngFor="let element of array">
           <span>&#10004;</span>
-          <p>{{c}}</p>
+          <p>{{element}}</p>
         </div>
       </div>
     </div>

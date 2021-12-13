@@ -1,24 +1,22 @@
 
 section.three {
-  .title {
-  }
-
-  .card-wrapper {
+  div.card-wrapper {
     display: flex;
     flex-direction: column;
+
+    button {
+      margin: 20px;
+    }
   }
 
-  button {
-    margin: 20px;
-  }
-
-  .animation-wrapper {
+  div.animation-wrapper {
+    min-height: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
 
-    .card.small {
+    div.card.small {
       flex-direction: row;
       width: 100%;
       margin-left: 0;
@@ -33,8 +31,8 @@ section.three {
       }
     }
 
-    .card + .card {
-      margin-top: 20px;
+    div.card + div.card {
+      margin-top: 10px;
     }
   }
 
