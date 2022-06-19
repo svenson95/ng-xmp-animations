@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
+  font-size: 14px;
 }
 
 p {
@@ -18,25 +19,25 @@ button.primary-button {
   cursor: pointer;
   height: fit-content;
   width: fit-content;
-  background: rgba(#0084ff, .6);
+  background: rgba(#0084ff, 0.6);
   color: white;
   border: 1px solid lightgrey;
   padding: 10px 14px;
 
   &:hover {
-    background: rgba(#0084ff, .8);
+    background: rgba(#0084ff, 0.8);
   }
 }
 
 code {
   font-family: Roboto Mono, monospace;
   width: fit-content;
-  background-color: hsla(0, 0%, 86%, .3);
+  background-color: hsla(0, 0%, 86%, 0.3);
   border-radius: 4px;
   padding: 1px 2px;
 }
 
-.sections > *:not(:first-child):not(:last-child) section {
+main > *:not(:first-child):not(:last-child) section {
   position: relative;
   clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
 }
