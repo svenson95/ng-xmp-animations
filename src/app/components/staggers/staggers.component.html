@@ -1,15 +1,28 @@
 <section class="three">
   <div class="content">
     <h1 class="title">Stagger animations</h1>
-    <code>{{"import { animate, query, stagger, state, style, transition, trigger } from \"@angular/animations\";"}}</code>
-    <code>stagger(timings: <span>string | number</span>, animation: <span>AnimationMetadata | AnimationMetadata[]</span>):
-      <b>AnimationStaggerMetadata</b></code>
+    <code>
+      {{
+        'import { animate, query, stagger, state, style, transition, trigger } from "@angular/animations";'
+      }}
+    </code>
+    <code>
+      stagger(timings: <span>string | number</span>, animation:
+      <span>AnimationMetadata | AnimationMetadata[]</span>):
+      <b>AnimationStaggerMetadata</b>
+    </code>
     <div class="card-wrapper">
-      <button class="primary-button" (click)="toggleSlide()">{{showStagger ? 'Hide' : 'Show'}} details</button>
-      <div class="animation-wrapper" [@staggerAnimation]="showStagger" #cardsContainer>
+      <button (click)="toggleSlide()">
+        {{ showStagger ? "Hide" : "Show" }} details
+      </button>
+      <div
+        class="animation-wrapper"
+        [@staggerAnimation]="showStagger"
+        #cardsContainer
+      >
         <div class="card small" *ngFor="let element of array">
           <span>&#10004;</span>
-          <p>{{element}}</p>
+          <p>{{ element }}</p>
         </div>
       </div>
     </div>

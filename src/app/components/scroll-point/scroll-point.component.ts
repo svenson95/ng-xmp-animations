@@ -18,7 +18,7 @@ import { ScrollService } from '../../services/scroll.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-slide',
+  selector: 'app-scroll-point',
   templateUrl: './scroll-point.component.html',
   styleUrls: ['./scroll-point.component.scss'],
   animations: [

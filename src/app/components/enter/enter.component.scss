@@ -1,4 +1,3 @@
-
 section.one {
   width: fit-content;
   justify-content: center;
@@ -15,7 +14,7 @@ section.one {
     flex-direction: column;
     align-items: start;
 
-    button.primary-button {
+    button {
       margin: 20px;
     }
 
@@ -28,7 +27,7 @@ section.one {
       }
 
       code.import {
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
     }
   }

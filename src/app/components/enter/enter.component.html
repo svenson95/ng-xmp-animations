@@ -2,22 +2,41 @@
   <h1 class="title right">State animation</h1>
   <div class="content">
     <code class="subtitle">@angular/animations</code>
-    <p style="margin-top: 5px;">Integrated animation builder</p>
+    <p style="margin-top: 5px">Integrated animation builder</p>
     <code class="subtitle">@angular/animations/browser</code>
-    <p style="margin-top: 5px;">Provides infrastructure for cross-platform rendering of animations in a browser.</p>
-    <code class="subtitle" style="display: flex; margin-top: 25px;">@angular/animations/browser/testing</code>
-    <p style="margin-top: 5px;">Provides infrastructure for testing of the Animations browser subsystem.</p>
+    <p style="margin-top: 5px">
+      Provides infrastructure for cross-platform rendering of animations in a
+      browser.
+    </p>
+    <code class="subtitle" style="display: flex; margin-top: 25px"
+      >@angular/animations/browser/testing</code
+    >
+    <p style="margin-top: 5px">
+      Provides infrastructure for testing of the Animations browser subsystem.
+    </p>
   </div>
 
   <div class="card-wrapper">
-    <button class="primary-button" (click)="toggleVisible()">{{show ? 'Show' : 'Hide'}} implementation</button>
+    <button (click)="toggleVisible()">
+      {{ show ? "Show" : "Hide" }} implementation
+    </button>
 
-    <div class="card" [@slide]="visibleState" (@slide.start)="logStart($event)"
-         (@slide.done)="logDone($event)">
+    <div
+      class="card"
+      [@slide]="visibleState"
+      (@slide.start)="logStart($event)"
+      (@slide.done)="logDone($event)"
+    >
       <p>
-        To enable angular animations <code>BrowserAnimationsModule</code> need to be imported either in
-        <code>app.module.ts</code> or in the related component where the animations should be applied.</p>
-      <code class="import">{{"import { BrowserAnimationsModule } from '@angular/platform-browser/animations';"}}}</code>
+        To enable angular animations <code>BrowserAnimationsModule</code> need
+        to be imported either in <code>app.module.ts</code> or in the related
+        component where the animations should be applied.
+      </p>
+      <code class="import"
+        >{{
+          "import { BrowserAnimationsModule } from '@angular/platform-browser/animations';"
+        }}}</code
+      >
     </div>
   </div>
 </section>
