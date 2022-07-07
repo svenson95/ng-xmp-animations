@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gh-build": "ng build --output-path docs --base-href https://svenson95.github.io/ng-xmp-landing-animations/"
   },
   "private": true,
   "dependencies": {
