@@ -74,9 +74,7 @@ export class ScrollPointComponent implements OnInit, OnDestroy {
   ];
   scrolling$!: Subscription;
 
-  constructor(private scroll: ScrollService, private ngZone: NgZone) {
-    console.log(JSON.stringify(this.typescript));
-  }
+  constructor(private scroll: ScrollService, private ngZone: NgZone) {}
 
   get slideState() {
     return this.inViewport ? 'visible' : 'hidden';
@@ -105,7 +103,7 @@ export class ScrollPointComponent implements OnInit, OnDestroy {
 
   isInViewport(el: HTMLElement) {
     const { top, bottom } = el.getBoundingClientRect();
-    return top <= 600 && bottom >= 300;
+    return top <= 800 && bottom >= 300;
   }
 
   toggleSlide() {
