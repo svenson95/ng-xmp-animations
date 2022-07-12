@@ -1,8 +1,8 @@
 import {
   Component,
   ElementRef,
+  Inject,
   NgZone,
-  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -14,8 +14,8 @@ import {
   trigger,
 } from '@angular/animations';
 
-import { ScrollService } from '../../services/scroll.service';
-import { Subscription } from 'rxjs';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-scroll-point',
@@ -47,7 +47,7 @@ import { Subscription } from 'rxjs';
     ]),
   ],
 })
-export class ScrollPointComponent implements OnInit, OnDestroy {
+export class ScrollPointComponent implements OnInit {
   public typescript = `
     import { fromEvent, Observable } from "rxjs";
     import { debounceTime, map } from "rxjs/operators";
@@ -72,9 +72,9 @@ export class ScrollPointComponent implements OnInit, OnDestroy {
     'Motion greatly enhances the user experience',
     "Angular's animation system is built on CSS functionality",
   ];
-  scrolling$!: Subscription;
+  scrollEvent$ = fromEvent(window, 'scroll').pipe(debounceTime(30));
 
-  constructor(private scroll: ScrollService, private ngZone: NgZone) {}
+  constructor(@Inject(NgZone) private ngZone: NgZone) {}
 
   get slideState() {
     return this.inViewport ? 'visible' : 'hidden';
@@ -84,16 +84,11 @@ export class ScrollPointComponent implements OnInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       // Angular triggers Change Detection every time when async operation (setTimeout/setInterval) ticks,
       // or if promise has been resolved
-      // or when DOM event happens (and it has some handler)
-
-      // In current scenario we have 3rd case but do not want to run change detection for entire app
-      // Because scroll event happens too often, so it can be too expensive
-      // that's why we should run it outside Angular.
-
+      // or when DOM event happens and it has some handler (this case).
       // Inside runOutsideAngular callback, events which are usually triggering CD
       // will not do it anymore, so you can improve performance of your app in this case.
 
-      this.scrolling$ = this.scroll.scrollEvent$.subscribe(() => {
+      this.scrollEvent$.subscribe(() => {
         this.ngZone.run(() => {
           this.inViewport = this.isInViewport(this.image.nativeElement);
         });
@@ -108,9 +103,5 @@ export class ScrollPointComponent implements OnInit, OnDestroy {
 
   toggleSlide() {
     this.inViewport = !this.inViewport;
-  }
-
-  ngOnDestroy() {
-    this.scrolling$.unsubscribe();
   }
 }
