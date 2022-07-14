@@ -1,5 +1,5 @@
 {
-  "name": "ng-xmp-landing-animations",
+  "name": "ng-xmp-animations",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "gh-build": "ng build --output-path docs --base-href https://svenson95.github.io/ng-xmp-landing-animations/"
+    "gh-build": "ng build --output-path docs --base-href https://svenson95.github.io/ng-xmp-animations/"
   },
   "private": true,
   "dependencies": {
