@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~15.1.4",
     "@angular/platform-browser-dynamic": "~15.1.4",
     "@angular/router": "~15.1.4",
+    "ng-xmp-base": "^0.0.14",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
