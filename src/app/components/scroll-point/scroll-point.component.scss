@@ -28,9 +28,14 @@ section.two {
       max-width: 550px;
     }
 
-    .card {
-      width: 180px;
+    .image-wrapper {
+      display: flex;
+      align-items: flex-end;
       margin-top: 20px;
+
+      img {
+        width: 180px;
+      }
     }
   }
 }
