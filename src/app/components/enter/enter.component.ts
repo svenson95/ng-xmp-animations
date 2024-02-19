@@ -27,7 +27,7 @@ import {
         })
       ),
       transition(':enter', animate('400ms 300ms ease-out')),
-      transition('* => visible', animate('400ms ease-out')),
+      transition('* => visible', animate('200ms ease-out')),
       transition('visible => *', animate('400ms ease-out')),
     ]),
   ],
