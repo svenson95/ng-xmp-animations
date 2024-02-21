@@ -72,6 +72,9 @@ export class ScrollPointComponent implements OnInit {
     'Motion greatly enhances the user experience',
     "Angular's animation system is built on CSS functionality",
   ];
+
+  // Angular triggers Change Detection every time
+  // when DOM event happens and it has some handler 
   scrollEvent$ = fromEvent(window, 'scroll').pipe(debounceTime(30));
 
   constructor(@Inject(NgZone) private ngZone: NgZone) {}
@@ -81,13 +84,9 @@ export class ScrollPointComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Inside runOutsideAngular callback, events which are usually triggering CD
+    // will not do it anymore, so you can improve performance with this approach
     this.ngZone.runOutsideAngular(() => {
-      // Angular triggers Change Detection every time when async operation (setTimeout/setInterval) ticks,
-      // or if promise has been resolved
-      // or when DOM event happens and it has some handler (this case).
-      // Inside runOutsideAngular callback, events which are usually triggering CD
-      // will not do it anymore, so you can improve performance of your app in this case.
-
       this.scrollEvent$.subscribe(() => {
         this.ngZone.run(() => {
           this.inViewport = this.isInViewport(this.image.nativeElement);
