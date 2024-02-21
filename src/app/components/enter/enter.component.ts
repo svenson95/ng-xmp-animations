@@ -17,7 +17,7 @@ import {
         '*',
         style({
           opacity: 0,
-          transform: 'translateX(-200%)',
+          transform: 'translateX(-100px)',
         })
       ),
       state(
